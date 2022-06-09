@@ -1,0 +1,13 @@
+from typing import Protocol
+
+from api.repository.client_repository import ClientRepository
+
+
+class RepositoryUow(Protocol):
+    clients: ClientRepository
+
+    async def __aenter__(self) -> None: ...
+    async def __aexit__(self, *args) -> None: ...
+    async def commit(self) -> None: ...
+    async def rollback(self) -> None: ...
+
