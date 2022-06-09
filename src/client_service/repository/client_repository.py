@@ -15,18 +15,15 @@ class ClientRepository(Protocol):
 
 
 class SqlAclhemyClientRepository:
-    async def __init__(self, session: AsyncSession) -> None:
+    def __init__(self, session: AsyncSession) -> None:
         self._session: AsyncSession = session
 
     async def add(self, client: Client) -> None:
         self._session.add(client)
 
     async def find_by_telegram_id(self, id: int) -> Optional[Client]:
-        return (await self._session.execute(
-             select(Client)
-             .where(Client.telegram_id == id)
-             .scalars()
-             .first()))
+        q = select(Client).where(Client.telegram_id == id)
+        return (await self._session.execute(q)).scalars().first()
 
     async def get_all(self) -> list[Client]:
         result = await self._session.execute(select(Client))
