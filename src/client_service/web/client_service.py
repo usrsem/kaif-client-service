@@ -1,11 +1,11 @@
-from typing import Optional
-import api.domain.dtos as dtos
-from api.repository.repository_uow import RepositoryUow
+import client_service.domain.dtos as dtos
+import generated.kaif_client_service_pb2_grpc as pb2
+
+from client_service.repository.repository_uow import RepositoryUow
 from generated.kaif_client_service_pb2 import Client, ClientRequest, ClientsList
-from generated.kaif_client_service_pb2_grpc import ClientService
 
 
-class ClientsService(ClientService):
+class V1ClientService(pb2.ClientService):
 
     def __init__(self, uow: RepositoryUow) -> None:
         self.uow: RepositoryUow = uow

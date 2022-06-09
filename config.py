@@ -1,5 +1,5 @@
 import os
-from pydantic import BaseSettings, Field
+from pydantic import BaseSettings
 
 prefix: str = "KAIF_CLIENT_SERVICE_"
 

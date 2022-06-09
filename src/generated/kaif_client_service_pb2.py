@@ -44,7 +44,7 @@ ClientsList = _reflection.GeneratedProtocolMessageType('ClientsList', (_message.
 _sym_db.RegisterMessage(ClientsList)
 
 _CLIENTSERVICE = DESCRIPTOR.services_by_name['ClientService']
-if _descriptor._USE_C_DESCRIPTORS == False:
+if _descriptor._USE_C_DESCRIPTORS == False: # type: ignore
 
   DESCRIPTOR._options = None
   _CLIENT._serialized_start=58

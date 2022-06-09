@@ -1,6 +1,6 @@
 import dataclasses
 
-from api.domain.dtos import Client
+from client_service.domain.dtos import Client
 from typing import Optional, Protocol
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import update

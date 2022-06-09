@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "kaif-client-service"
+name = "client_service"
 version = "0.1.0"
 description = "Serice for client model cruid"
 authors = ["idevtier <idevtier@gmail.com>"]
@@ -22,3 +22,6 @@ pytest_async = "^0.1.1"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+api = "client_service.__main__:run"
