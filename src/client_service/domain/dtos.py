@@ -8,5 +8,4 @@ class Client:
     telegram_id: int
     telegram_username: Optional[str]
     telegram_fullname: str
-    created_at: datetime
 
