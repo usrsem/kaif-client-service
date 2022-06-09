@@ -2,6 +2,7 @@ import asyncio
 import client_service.factories as factories
 import generated.kaif_client_service_pb2_grpc as pb2_grpc
 import grpc
+from client_service.loader import log
 
 
 async def serve() -> None:
@@ -14,6 +15,7 @@ async def serve() -> None:
 
 
 def run() -> None:
+    log.info("Starting app")
     asyncio.get_event_loop().run_until_complete(serve())
 
 

@@ -3,6 +3,12 @@ from sqlalchemy.ext.asyncio.session import AsyncSession
 from sqlalchemy.orm.session import sessionmaker
 from config import ASYNC_PG_URL
 from db.mappers import start_mappers, get_query_cls
+from loguru import logger
+
+
+log = logger
+
+log.info("Loader started")
 
 start_mappers()
 
