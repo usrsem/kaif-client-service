@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "kaif-client-service"
+version = "0.1.0"
+description = "Serice for client model cruid"
+authors = ["idevtier <idevtier@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+grpcio = "^1.46.3"
+grpcio-tools = "loguru"
+loguru = "^0.6.0"
+asyncpgsa = "^0.27.1"
+alembic = "^1.8.0"
+pydantic = "^1.9.1"
+psycopg2-binary = "^2.9.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
+pytest_async = "^0.1.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
