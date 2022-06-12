@@ -1,5 +1,4 @@
 from google.protobuf.empty_pb2 import Empty
-from sqlalchemy.future import select
 import generated.kaif_client_service_pb2 as pb2
 import client_service.domain.dtos as dtos
 import client_service.web.mappers as mappers
@@ -35,7 +34,7 @@ async def test_get_client(client_service_stub, session: AsyncSession):
         assert new_client == client
 
     finally:
-        client_dto = await session.get(dtos.Client, new_client.telegram_id)
+        client_dto = await session.get(dtos.Client, client.telegram_id)
         await session.delete(client_dto)
         await session.commit()
 
@@ -80,7 +79,7 @@ async def test_update_client(client_service_stub, session: AsyncSession):
 
         assert new_client == updated_client
     finally:
-        client_dto = await session.get(dtos.Client, new_client.telegram_id)
+        client_dto = await session.get(dtos.Client, client.telegram_id)
         await session.delete(client_dto)
         await session.commit()
 
