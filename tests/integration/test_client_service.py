@@ -51,7 +51,7 @@ async def test_get_all_clients(client_service_stub, session: AsyncSession):
         for client in clients:
             client_service_stub.AddClient(client)
 
-        new_clients = client_service_stub.GetAllClients(Empty()).clients
+        new_clients = [c for c in client_service_stub.GetAllClients(Empty())]
 
         before_ids = [c.telegram_id for c in clients]
         after_ids = [c.telegram_id for c in new_clients]
