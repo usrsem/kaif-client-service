@@ -6,7 +6,7 @@ import generated.kaif_client_service_pb2_grpc as pb2
 
 from client_service.repository.repository_uow import RepositoryUow
 from client_service.loader import log
-from generated.kaif_client_service_pb2 import Client
+from generated.kaif_client_service_pb2 import Client, ClientRequest
 
 
 class V1ClientService(pb2.ClientService):
@@ -14,7 +14,7 @@ class V1ClientService(pb2.ClientService):
     def __init__(self, uow: RepositoryUow) -> None:
         self.uow: RepositoryUow = uow
 
-    async def AddClient(self, client, _) -> Empty:
+    async def AddClient(self, client: Client, _) -> Empty:
         log.debug(f"Adding client {client}")
         client_dto: dtos.Client = mappers.client_grpc_to_dto(client)
 
@@ -24,7 +24,7 @@ class V1ClientService(pb2.ClientService):
 
         return Empty()
 
-    async def GetClient(self, request, _) -> Client:
+    async def GetClient(self, request: ClientRequest, _) -> Client:
         log.debug(f"Getting client {request}")
         async with self.uow:
             client_dto = await self.uow.clients.find_by_telegram_id(
@@ -47,7 +47,7 @@ class V1ClientService(pb2.ClientService):
         for client in clients_dtos:
             yield mappers.client_dto_to_grpc(client)
 
-    async def UpdateClient(self, client, _) -> Empty:
+    async def UpdateClient(self, client: Client, _) -> Empty:
         log.debug(f"Updating client {client}")
         client_dto = mappers.client_grpc_to_dto(client)
 
