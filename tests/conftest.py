@@ -3,9 +3,8 @@ import grpc
 from sqlalchemy.ext.asyncio.engine import create_async_engine
 from sqlalchemy.ext.asyncio.session import AsyncSession
 from sqlalchemy.orm.session import sessionmaker
-from client_service.loader import DEFAULT_SESSION_FACTORY
-from client_service.repository.repository_uow import SqlAlchemyRepositoryUow
 from config import ASYNC_PG_URL
+from db.mappers import start_mappers
 import generated.kaif_client_service_pb2_grpc as pb2_grpc
 
 
@@ -26,4 +25,6 @@ def client_service_stub():
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = pb2_grpc.ClientServiceStub(channel)
         yield stub
+
+start_mappers()
 
