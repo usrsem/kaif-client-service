@@ -45,6 +45,7 @@ class V1ClientService(pb2.ClientService):
             await self.uow.commit()
 
         for client in clients_dtos:
+            log.debug(f"Sending client: {client}")
             yield mappers.client_dto_to_grpc(client)
 
     async def UpdateClient(self, client: Client, _) -> Empty:
